@@ -1,0 +1,143 @@
+{
+  "provenance": {
+    "kind": "synthetic schema-shaped examples; not captured native evidence",
+    "target_version": "0.163.0",
+    "source": "local read-only rust-v0.163.0 schema export preserved under .superpowers/codex-contract-20261016-schema-0163/v2",
+    "contracts": {
+      "config_read": "ConfigReadParams.json and ConfigReadResponse.json",
+      "hooks_list": "HooksListParams.json and HooksListResponse.json",
+      "initialize": "../codex_app_server_protocol.schemas.json#/definitions/InitializeResponse",
+      "usage": "GetAccountRateLimitsResponse.json"
+    }
+  },
+  "initialize": {
+    "codexHome": "C:/synthetic-codex-c1/never-used-home",
+    "platformFamily": "windows",
+    "platformOs": "windows",
+    "userAgent": "codex-cli/0.163.0"
+  },
+  "config_read": {
+    "config": {
+      "approval_policy": "on-request",
+      "sandbox_mode": "read-only",
+      "mcp_servers": {
+        "experience_memory_c1_wiring": {
+          "command": "<synthetic-python-executable>",
+          "args": ["-I", "<synthetic-fixture-script>", "--project", "a"],
+          "enabled": true,
+          "startup_timeout_sec": 15,
+          "tool_timeout_sec": 15
+        }
+      },
+      "features": {
+        "plugins": false,
+        "memories": false,
+        "apps": false,
+        "hooks": false,
+        "multi_agent": false,
+        "browser_use": false,
+        "computer_use": false,
+        "shell_tool": false,
+        "unified_exec": false,
+        "skill_search": false,
+        "skill_mcp_dependency_install": false,
+        "workspace_dependencies": false,
+        "image_generation": false,
+        "shell_snapshot": false,
+        "unbounded_connection_retries": false
+      },
+      "web_search": "disabled"
+    }
+  },
+  "project_layer": {
+    "name": {"type": "project", "dotCodexFolder": "<synthetic-root>/.codex"},
+    "version": "0.163.0",
+    "disabledReason": null,
+    "config": {
+      "mcp_servers": {
+        "experience_memory_c1_wiring": {
+          "command": "<synthetic-python-executable>",
+          "args": ["-I", "<synthetic-fixture-script>", "--project", "a"],
+          "enabled": true,
+          "startup_timeout_sec": 15,
+          "tool_timeout_sec": 15
+        }
+      }
+    }
+  },
+  "hooks_list": {
+    "data": [
+      {"cwd": "<synthetic-root>", "errors": [], "hooks": [], "warnings": []}
+    ]
+  },
+  "usage": {
+    "ordinaryUsageAllowed": true,
+    "rateLimits": {"primary": null, "secondary": null, "rateLimitReachedType": null, "normalModelSlug": null},
+    "rateLimitsByLimitId": {}
+  },
+  "exec": {
+    "provenance": {
+      "kind": "synthetic schema-shaped examples; not captured native evidence",
+      "target_version": "0.163.0",
+      "source_url": "https://raw.githubusercontent.com/openai/codex/rust-v0.163.0/codex-rs/exec/src/exec_events.rs",
+      "source_sha256": "dafa872d7e86a099e56e28a329dcb9c03db90ed768c3b88cca8c91d46dc1d0e5",
+      "source_copy": ".superpowers/task4-exec-events-0163-20261019/exec_events.rs",
+      "mapping_source_url": "https://raw.githubusercontent.com/openai/codex/rust-v0.163.0/codex-rs/exec/src/event_processor_with_jsonl_output.rs",
+      "mapping_source_sha256": "bc296541b385f9b4ca2c28cc638e25a8d6b1332b2cd67f5a03eaa97a3d612b19",
+      "result_status_source": ".superpowers/codex-c1-source-0163/mcp-tool-call/source.rs:1023-1041",
+      "result_status_source_sha256": "e434c6380a209c96ff8a34bf1a0b6f375a72e6fdeaa02ac04bcb2657234ec569",
+      "notes": [
+        "Exec item.id is an independently generated item_N namespace, not metadata callId.",
+        "McpToolCallItemResult uses structured_content, not MCP structuredContent, and does not expose isError.",
+        "Fixture DTOs are JSON in a single text content block; native failed can carry expected SESSION_INVALID.",
+        "Only cache_write_input_tokens is optional/defaulted in Usage. No proof defaults are inferred.",
+        "initialize.codexHome is a literal absolute synthetic Windows path, never an inspected or used account home.",
+        "These are independently decodable contract examples, not one complete successful five-step run."
+      ]
+    },
+    "canonical_arguments": {
+      "bootstrap_utf8": "{\"probe_nonce\":\"c1-offline\"}",
+      "bootstrap_sha256": "ddb4118744d15758138906f3e9d7af8e0239ac076cd23fd28efbdb58452abb97",
+      "current_status_utf8": "{\"session_handle\":\"synthetic-current-handle\"}",
+      "current_status_sha256": "b3eeb6000183fa1770bbe9ba81bfd645571597481092812897900112d53497c3"
+    },
+    "events": [
+      {"type": "thread.started", "thread_id": "synthetic-current-session"},
+      {"type": "turn.started"},
+      {
+        "type": "item.started",
+        "item": {
+          "id": "exec-item-1", "type": "mcp_tool_call", "server": "experience_memory_c1_wiring",
+          "tool": "c1_bootstrap", "arguments": {"probe_nonce": "c1-offline"},
+          "result": null, "error": null, "status": "in_progress"
+        }
+      },
+      {
+        "type": "item.completed",
+        "item": {
+          "id": "exec-item-1", "type": "mcp_tool_call", "server": "experience_memory_c1_wiring",
+          "tool": "c1_bootstrap", "arguments": {"probe_nonce": "c1-offline"},
+          "result": {
+            "content": [{"type": "text", "text": "{\"status\":\"ready\",\"session_id\":\"synthetic-current-session\",\"project_key\":\"local:c1-offline-a\",\"session_handle\":\"synthetic-current-handle\",\"host_source\":\"codex_stdio_0.163.0\",\"backend\":\"in_memory_platform_double\",\"seed_origin\":\"synthetic_not_prior_native_sessions\",\"prior_session\":{\"session_id\":\"synthetic-prior-session\",\"project_key\":\"local:c1-offline-a\",\"session_handle\":\"synthetic-prior-handle\",\"owner_status_verified\":true},\"foreign_project\":{\"session_id\":\"synthetic-foreign-session\",\"project_key\":\"local:c1-offline-b\",\"session_handle\":\"synthetic-foreign-handle\",\"owner_status_verified\":true}}"}],
+            "structured_content": null
+          },
+          "error": null, "status": "completed"
+        }
+      },
+      {
+        "type": "item.completed",
+        "item": {
+          "id": "exec-item-3", "type": "mcp_tool_call", "server": "experience_memory_c1_wiring",
+          "tool": "memory_status", "arguments": {"session_handle": "synthetic-prior-handle"},
+          "result": {
+            "content": [{"type": "text", "text": "{\"status\":\"failed\",\"error_code\":\"SESSION_INVALID\"}"}],
+            "structured_content": null
+          },
+          "error": null, "status": "failed"
+        }
+      },
+      {"type": "item.completed", "item": {"id": "answer", "type": "agent_message", "text": "C1_WIRING_DONE"}},
+      {"type": "turn.completed", "usage": {"input_tokens": 1, "cached_input_tokens": 0, "cache_write_input_tokens": 0, "output_tokens": 1, "reasoning_output_tokens": 0}}
+    ]
+  }
+}

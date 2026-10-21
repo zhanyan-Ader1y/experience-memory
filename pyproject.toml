@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=77,<83"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "experience-memory"
+version = "0.1.0"
+description = "Portable experience-memory plugin runtime skeleton"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["mcp==2.3.0"]
+
+[project.scripts]
+experience-memory = "experience_memory.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

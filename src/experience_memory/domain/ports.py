@@ -1,0 +1,59 @@
+"""Stable contracts; persistence, binding, locking and rules arrive in T01–T07."""
+
+from pathlib import Path
+from typing import Protocol
+
+from .models import ActiveWindow, Checkpoint, ControlPointer, MemoryRecord, ReadReceipt, Scope, SessionContext
+from typing import ContextManager
+from enum import Enum
+from dataclasses import dataclass
+
+
+class OperationStatus(str, Enum):
+    CONFIRMED = "confirmed"
+    PENDING = "pending"
+    UNKNOWN = "unknown"
+    FAILED = "failed"
+
+
+@dataclass(frozen=True)
+class WriteOutcome:
+    status: OperationStatus
+    operation_id: str
+    record_ids: tuple[str, ...] = ()
+    event_id: str | None = None
+    error_code: str | None = None
+
+
+class ExperienceRepository(Protocol):
+    def search(self, scope: Scope, query: str, limit: int) -> tuple[MemoryRecord | dict, ...]: ...
+    def read(self, scope: Scope, record_id: str) -> MemoryRecord: ...
+    def exact(self, scope: Scope, experience_id: str) -> MemoryRecord | None: ...
+    def write(self, scope: Scope, draft: dict, record_id: str | None,
+              expected_fingerprint: str | None, operation_id: str) -> WriteOutcome: ...
+    def retry(self, scope: Scope, operation_id: str, candidate: dict, request_hash: str) -> dict | None: ...
+    def verify_write_scope(self, scope: Scope, record_id: str) -> None: ...
+
+
+class ControlStateRepository(Protocol):
+    def read(self, context: SessionContext, record_id: str, kind: str) -> dict: ...
+    def write(self, context: SessionContext, kind: str, key: str, value: dict, operation_id: str) -> str: ...
+    def save(self, scope: Scope, kind: str, key: str, value: dict, operation_id: str) -> str: ...
+    def find(self, context: SessionContext, kind: str, key: str) -> tuple[str,dict] | None: ...
+
+
+class PointerStorePort(Protocol):
+    def read(self, project_key: str, session_id: str) -> ControlPointer | None: ...
+    def publish_locked(self, pointer: ControlPointer) -> None: ...
+    def lock(self, project_key: str, session_id: str | None, *, timeout_seconds: float = 10) -> ContextManager[None]: ...
+
+
+class SessionRuntimePort(Protocol):
+    def resolve_scope(self, cwd: Path) -> Scope: ...
+    def bind_session(self, scope: Scope, session_id: str) -> SessionContext: ...
+    def prepare(self, cwd: Path, session_id: str) -> ControlPointer: ...
+    def lock(self, project_key: str, session_id: str | None = None, *, timeout_seconds: float = 10) -> ContextManager[None]: ...
+
+
+class CoreLoaderPort(Protocol):
+    def load(self, project_root: Path, relative_paths: tuple[str, ...], budget_bytes: int = 8192) -> str: ...

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "experience-memory",
+  "version": "0.1.0",
+  "description": "项目经验读写、有效采用与压缩留存；原生宿主身份和恢复能力仍待验收。",
+  "extensions": {
+    "com.openai": {
+      "hooks": "./hooks/hooks.json"
+    }
+  }
+}

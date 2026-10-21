@@ -1,0 +1,5 @@
+interface:
+  display_name: "项目离线验证"
+  short_description: "经验插件的固定离线入口、单方法选择及证据边界"
+policy:
+  allow_implicit_invocation: false

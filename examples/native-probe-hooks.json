@@ -1,0 +1,22 @@
+{
+  "description": "T01 合成探针；仅供独立测试会话审阅，不能覆盖正常插件 hooks.json",
+  "hooks": {
+    "SessionStart": [{"hooks": [{
+      "type": "command",
+      "command": "python \"${PLUGIN_ROOT}/scripts/native_hook_probe.py\" --output-dir \"${PLUGIN_DATA}/contract-probe\" --nonce t01-20261014 --payload-bytes 8192",
+      "timeout": 30,
+      "additionalContextLimit": 0,
+      "statusMessage": "验证合成压缩哨兵"
+    }]}],
+    "PreCompact": [{"hooks": [{
+      "type": "command",
+      "command": "python \"${PLUGIN_ROOT}/scripts/native_hook_probe.py\" --output-dir \"${PLUGIN_DATA}/contract-probe\" --nonce t01-20261014 --payload-bytes 8192",
+      "timeout": 30
+    }]}],
+    "PostCompact": [{"hooks": [{
+      "type": "command",
+      "command": "python \"${PLUGIN_ROOT}/scripts/native_hook_probe.py\" --output-dir \"${PLUGIN_DATA}/contract-probe\" --nonce t01-20261014 --payload-bytes 8192",
+      "timeout": 30
+    }]}]
+  }
+}

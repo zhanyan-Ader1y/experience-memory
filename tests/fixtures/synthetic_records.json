@@ -1,0 +1,5 @@
+{
+  "payload": "{\"schema_version\":1,\"sentinel\":\"合成协议哨兵\",\"entries\":[]}",
+  "query": "synthetic control sentinel idempotency",
+  "experience": "Synthetic control sentinel idempotency: fixture experience; never use as a real rule."
+}

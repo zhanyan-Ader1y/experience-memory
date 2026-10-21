@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "mem0_api_url": "https://api.mem0.ai",
+  "project_scope": null,
+  "core_paths": [],
+  "retention_budget_bytes": 8192,
+  "search_limit": 5,
+  "request_timeout_seconds": 10,
+  "hook_deadline_seconds": 30,
+  "shared_scope": false,
+  "namespace_mapping": null
+}

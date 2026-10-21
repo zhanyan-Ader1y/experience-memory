@@ -1,0 +1,30 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"${PLUGIN_ROOT}/hooks/adapter.py\"",
+            "timeout": 30,
+            "statusMessage": "恢复经验活动窗口"
+          }
+        ],
+        "matcher": "^(startup|resume|clear|compact)$"
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"${PLUGIN_ROOT}/hooks/adapter.py\"",
+            "timeout": 30,
+            "statusMessage": "保存本次经验检查点"
+          }
+        ]
+      }
+    ]
+  },
+  "description": "功能已接通；正常安装/信任及原生能力须在 G1 验收。"
+}
